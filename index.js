@@ -6,7 +6,7 @@ const app=express();
 
 //setting us view engine
 app.set('view engine','ejs');
-app.set('view','./views');
+app.set('views','./views');
 
 
 app.use('/',require('./routes'));

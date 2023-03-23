@@ -3,6 +3,7 @@ const path=require('path');
 const port =8000;
 const app=express();
 const expressLayouts= require('express-ejs-layouts');
+const db=require('./config/mongoose');
 
 app.use(express.static('./assets'));
 //extract style and script for sub pages

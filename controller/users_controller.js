@@ -20,3 +20,13 @@ module.exports.signUp=function(req,res){
         title:'Codial | Sign Up'
     });
 }
+
+//get sign up data
+module.exports.create=function(req,res){
+    //Todo later
+}
+
+//log in and create a session for user
+module.exports.createSession=function(req,res){
+    //todo later
+}

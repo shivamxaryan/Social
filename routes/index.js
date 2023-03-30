@@ -6,6 +6,6 @@ const homeController=require('../controller/home_controller');
 console.log('Router is working in Codial');
 
 router.get('/',homeController.home);
-router.use('/user',require('./user'));
+router.use('/user',require('./users'));
 
 module.exports=router;

@@ -11,7 +11,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
 app.use(express.static('./assets'));
-//extract style and script for sub pages
+//extract style and script for sub pages layout part
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
 

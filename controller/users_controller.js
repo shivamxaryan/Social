@@ -1,8 +1,9 @@
 const User = require('../models/user')
 
 module.exports.profile = function (req, res) {
-    if(req.cookies.user_id){
-        User.findById({email:user.body.email})
+    
+     if(req.cookies.user_id){
+        User.findById(req.cookies.user_id)
         .then(function(user){
             return res.render('user_profile',{
                 title:'User LogIn',
@@ -10,14 +11,27 @@ module.exports.profile = function (req, res) {
             });
         })
         .catch(function(err){
-            console.log('Error in log in2');
             return res.redirect('back');
         })
     }else{
-        console.log('Error in log in');
         return res.redirect('back');
     }
+
+    // if(req.cookies.user_id){
+    //     User.findById(req.cookies.user_id, function(err,user){
+    //         if(user){
+    //         return res.render('user_profile',{
+    //                        title:'User LogIn',
+    //                        user:user
+    //                    });
+    //                 }    
+    //     });
+    // }else{
+    //     return res.redirect('/users/log-in');
+    // }
 }
+
+
 
 
 //rendering Log in page

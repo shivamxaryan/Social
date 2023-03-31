@@ -1,9 +1,22 @@
 const User = require('../models/user')
 
 module.exports.profile = function (req, res) {
-    return res.render('user_profile', {
-        title: 'Users Profile'
-    });
+    if(req.cookies.user_id){
+        User.findById({email:user.body.email})
+        .then(function(user){
+            return res.render('user_profile',{
+                title:'User LogIn',
+                user:user
+            });
+        })
+        .catch(function(err){
+            console.log('Error in log in2');
+            return res.redirect('back');
+        })
+    }else{
+        console.log('Error in log in');
+        return res.redirect('back');
+    }
 }
 
 

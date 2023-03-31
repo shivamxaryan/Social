@@ -16,6 +16,7 @@ module.exports.profile = function (req, res) {
     }else{
         return res.redirect('back');
     }
+    //aiudhsiuh
 
     // if(req.cookies.user_id){
     //     User.findById(req.cookies.user_id, function(err,user){

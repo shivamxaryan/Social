@@ -30,8 +30,8 @@ app.use(session({
     name:'Social',
     //todo later before deployment
     secret:'blahsomething',
-    saveUninitialized:false,
-    resave:false,
+    saveUninitialized:false,  // when a user is not logged in does session cookies have to save it, ofcourse not.
+    resave:false,             // when a user has logged in and the data has been not changed then it should not resave it right.
     cookie : {
         maxAge:(1000*50*100)
 }

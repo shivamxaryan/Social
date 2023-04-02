@@ -5,7 +5,8 @@ const User = require('../models/user');
 
 passport.use(new LocalStrategy({
     //what will be the username of the user, so it is email from userSchema
-    usernameField:'email'
+    usernameField:'email',
+      
 },
 {
     function(email,password,done){
@@ -26,6 +27,7 @@ passport.use(new LocalStrategy({
     }
 }))
 
+//when the user will return from the above it will come to the serializeUser part
 //serializing the user to decide which key is to kept in the cookies
 passport.serializeUser(function(user,done){
     done(null,user.id);

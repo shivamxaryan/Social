@@ -1,4 +1,5 @@
 const express=require('express');
+const passport=require('passport');
 
 const router=express.Router();
 
@@ -11,6 +12,9 @@ router.get('/log-in',userProfile.logIn);
 router.get('/sign-up',userProfile.signUp);
 
 router.post('/create',userProfile.create);
-router.post('/create-Session',userProfile.createSession);
+router.post('/create-Session',passport.authenticate(
+    'local',
+    {failureRedirect:'/users/log-in'})
+    ,userProfile.createSession);
 
 module.exports=router;

@@ -5,6 +5,11 @@ const port =8000;
 const app=express();
 const expressLayouts= require('express-ejs-layouts');
 const db=require('./config/mongoose');
+//used for session cookies
+const session=require('express-session');
+const passport=require('passport');
+const passportLocal=require('./config/passport-local-strategy');
+
 
 app.use(express.urlencoded({extended:true}));
 
@@ -21,8 +26,23 @@ app.use(expressLayouts);
 app.set('view engine','ejs');
 app.set('views','./views');
 
+app.use(session({
+    name:'Social',
+    //todo later before deployment
+    secret:'blahsomething',
+    saveUninitialized:false,
+    resave:false,
+    cookie : {
+        maxAge:(1000*50*100)
+}
+
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.use('/',require('./routes'));
+
 
 app.listen(port,function(err){
     if(err){

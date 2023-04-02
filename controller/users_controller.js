@@ -11,6 +11,11 @@ module.exports.profile = function (req, res) {
 
 //rendering Log in page
 module.exports.logIn = function (req, res) {
+
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
     return res.render('user_log_in', {
         title: 'Codial | Log In'
     });
@@ -18,6 +23,11 @@ module.exports.logIn = function (req, res) {
 
 //rendering Sing Up page
 module.exports.signUp = function (req, res) {
+
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
     return res.render('user_sign_up', {
         title: 'Codial | Sign Up'
     });
@@ -33,13 +43,6 @@ module.exports.create = function (req, res) {
 
         .then(function (user) {
             if (!user) {
-                // User.create(req.body,function(err,user){
-                //     if(err){
-                //         console.log("Error in creating the user");
-                //         return;
-                //     }
-                //     return res.redirect('/users/sign-up');
-                // })
 
                 User.create(req.body)
                     .then(function (user) {

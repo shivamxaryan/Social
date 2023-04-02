@@ -63,7 +63,7 @@ passport.checkAuthentication = function(req,res,next){
 //set the user which is authenticated it will work as middleware.
 passport.setAuthenticatedUser=function(req,res,next){
     //req.user contain the current siggned in user from the cookies so we are just sending it to locals for the view.
-    if(req.isAuthenticated){
+    if(req.isAuthenticated()){
         res.locals.user = req.user;
     }
     next();

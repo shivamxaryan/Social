@@ -5,10 +5,12 @@ const port =8000;
 const app=express();
 const expressLayouts= require('express-ejs-layouts');
 const db=require('./config/mongoose');
+
 //used for session cookies
 const session=require('express-session');
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
+const MongoStore=require('connect-mongo'); //have to pass argument,here passing session because it have to connect to db for storing data.
 
 
 app.use(express.urlencoded({extended:true}));
@@ -34,8 +36,20 @@ app.use(session({
     resave:false,             // when a user has logged in and the data has been not changed then it should not resave it right.
     cookie : {
         maxAge:(1000*50*100)
-}
-
+},
+store : new MongoStore(
+    // {
+    //     mongooseConnection : db,
+    //     autoRemove: 'disabled'
+    // },
+    // function(err){
+    //     console.log(err || 'connect-mongo is succeded in setup');
+    // }
+    {
+        client:db.getClient(),
+        collectionName:'sessions'
+    }
+)
 }));
 app.use(passport.initialize());
 app.use(passport.session());

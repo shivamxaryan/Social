@@ -64,29 +64,6 @@ module.exports.create = function (req, res) {
             return;
         });
 }
-//     User.findOne({email: req.body.email}, function(err, user){
-//         if(err){
-//             console.log('error in finding the user');
-//             return;
-//         }
-
-//         if(!user){
-//             User.create(req.body, function(err,user){
-//                 if(err){
-//                     console.log('error in creating the user');
-//                     return;
-//                 }
-//                 return res.redirect('/users/sign-up');
-//             })
-//         }
-//         else{
-//             return res.redirect('back');
-//         }
-//     } );
-// }
-
-
-
 
 
 

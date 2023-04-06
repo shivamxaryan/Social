@@ -15,7 +15,7 @@ const userSchema=new mongoose.Schema({
         required:true
     }
 },{
-    timestamps:true
+    timestamps:true    //it shows created time,updated time.
 });
 
 const User=mongoose.model('User',userSchema);

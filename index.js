@@ -38,13 +38,6 @@ app.use(session({
         maxAge:(1000*50*100)
 },
 store : new MongoStore(
-    // {
-    //     mongooseConnection : db,
-    //     autoRemove: 'disabled'
-    // },
-    // function(err){
-    //     console.log(err || 'connect-mongo is succeded in setup');
-    // }
     {
         client:db.getClient(),
         collectionName:'sessions'

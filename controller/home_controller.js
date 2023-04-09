@@ -6,13 +6,7 @@ module.exports.home=function(req,res){
     // return res.render('home',{
     //     title:"Home"
     // });
-    
-    // Post.find({}).populate('user').exec(function(err,user){
-    //     return res.render('home',{
-    //         title:'Social | Home',
-    //         posts:posts
-    //     });
-    // })
+   
 
     Post.find({}).populate('user').exec({})
     .then(function(posts){

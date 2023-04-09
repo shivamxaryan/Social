@@ -5,5 +5,21 @@
         <form action="/posts/create" id="new-post-form" method="post" >
         <textarea name="content" cols="30" rows="2" placeholder="Type here...."></textarea>
         <input type="submit" value="Post">
-</form>
+        </form>
+        <div>
+                <ul id="post-list-container">
+                        <% for(post of posts){ %> 
+                        <p>
+                                <li>
+                                        <%= post.content %>
+                                        <br>
+                                        <small>
+                                                <%= post.user.name %>
+                                        </small>
+                                </li>
+                        </p>
+        
+                        <%}%>
+                </ul>
+        </div>
 </section>

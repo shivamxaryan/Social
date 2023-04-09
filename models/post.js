@@ -8,8 +8,13 @@ const postSchema=new mongoose.Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId,   //it will checks on the user (ObjectId is the unique no in studio3t)
         ref:'User'
-    }
-},{
+    },
+    //include  array of ids of all comments in this postshema itself
+    comment:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Comment'
+    }]
+},{                
     timestamps:true
 });
 

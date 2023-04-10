@@ -12,9 +12,9 @@ module.exports.create=function(req,res){
             })
             .then(function(comment){
                 post.comments.push(comment);
-                post.save();           // save will save it in db otherwise it is in RAM
+                post.save();                     // save will save it in db otherwise it is in RAM
 
-                return res.redirect('/');
+                res.redirect('/');
             })
             .catch(function(err){
                 console.log('Error in saving the comment');
@@ -25,5 +25,9 @@ module.exports.create=function(req,res){
             console.log('error in finding the Post');
             return;
         }
+    })
+    .catch(function(err){
+        console.log('Error in saving the comment1');
+                return;
     })
 }

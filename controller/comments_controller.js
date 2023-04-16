@@ -62,7 +62,7 @@ module.exports.destroy=async function(req,res){
     try{
         const comment=await Comment.findById(req.params.id);
         if(comment.user == req.user.id) {
-            // await comment.deleteOne();
+           
             let postId=comment.post;
             await comment.deleteOne();
 

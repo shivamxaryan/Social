@@ -1,4 +1,5 @@
 const Post=require('../models/post');
+const User=require('../models/user');
 
 module.exports.home=function(req,res){
 
@@ -12,11 +13,26 @@ module.exports.home=function(req,res){
     })
     .exec({})
     .then(function(posts){
-        return res.render('home',{
-            title:'Social | Home',
-            posts:posts
-        });
+        User.find({})
+        .then(function(users){
+            return res.render(home,{
+                title:Social|Home,
+                posts:posts,
+                all_users:users
+        })    
     })
+})
+    .exec(function(err,posts){
+        User.find({}, function(err,users){
+            return res.render(home,{
+                title:Social|Home,
+                posts:posts,
+                all_users:users
+            })
+
+        })
+    })
+
     .catch(function(err){
         console.log('error in showing posts lists');
     })

@@ -6,6 +6,7 @@ const app=express();
 const expressLayouts= require('express-ejs-layouts');
 const db=require('./config/mongoose');
 const flash=require('connect-flash');
+const customMware=require('./config/middleware');
 
 //used for session cookies
 const session=require('express-session');
@@ -51,6 +52,7 @@ app.use(passport.session());
 app.use(passport.setAuthenticatedUser);  //this function will automatically called as a middleware
 
 app.use(flash());
+app.use(customMware.setFlash);
 
 
 app.use('/',require('./routes'));

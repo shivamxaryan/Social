@@ -1,29 +1,26 @@
 const Post=require('../models/post');
 const User=require('../models/user');
 
-module.exports.home=function(req,res){
-
-    Post.find({})
+module.exports.home=async function(req,res){
+    try{
+        let posts=await Post.find({})
     .populate('user')
     .populate({                      // this is nested populating
         path:'comments',
         populate:{
             path:'user'
         }
-    })
-    .exec({})
-    .then(function(posts){
-        User.find({})
-        .then(function(users){
+    });
+
+    let users=await User.find({});
             return res.render('home',{
                 title:'Social|Home',
                 posts:posts,
                 all_users:users
-        })    
-    })
-})
+        });
 
-    .catch(function(err){
+    }catch(err){
         console.log('error in showing posts lists');
-    })
+        return;
+    }
 }

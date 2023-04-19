@@ -14,6 +14,18 @@ module.exports.profile = function (req, res) {
     
 }
 
+//update the profile's input
+module.exports.update=function(req,res){
+    if(req.user.id == req.params.id){
+        User.findByIdAndUpdate(req.params.id, req.body)
+        .then(function(user){
+            return res.redirect('back');
+        }).catch(function(err){
+            return res.status();
+        })
+    }
+}
+
 
 
 
@@ -90,3 +102,4 @@ module.exports.destroySession=function(req,res){
     return res.redirect('/');
 })
 }
+

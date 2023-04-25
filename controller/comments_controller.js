@@ -14,7 +14,7 @@ module.exports.create = async function (req, res) {
                 })
 
                 post.comments.push(comment);
-                post.save();                     // save will save it in db otherwise it is in RAM
+                post.save();                                 // save will save it in db otherwise it is in RAM
 
                 res.redirect('/');
             } catch (err) {

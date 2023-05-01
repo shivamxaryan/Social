@@ -51,7 +51,7 @@
     
         <div class="post-comments">
                 
-                <form action="/comments/create" method="post">
+                <form id="post-${ post._id }-comments-form" action="/comments/create" method="post">
                         <input type="text" name="content" placeholder="Type here to add comment..." required>
                         <input type="hidden" name="post"  value="${post._id}">
                         <input type="submit" value="Add Comment">
@@ -79,14 +79,14 @@
                 url:$(deleteLink).prop('href'),
                 success: function(data){
                     $(`#post-${data.data.post_id}`).remove();
-                    new Noty({
-                        theme: 'relax',
-                        text: "Post Deleted",
-                        type: 'success',
-                        layout: 'topRight',
-                        timeout: 1500
+                    // new Noty({
+                    //     theme: 'relax',
+                    //     text: "Post Deleted",
+                    //     type: 'success',
+                    //     layout: 'topRight',
+                    //     timeout: 1500
                         
-                    }).show();
+                    // }).show();
                 },error:function(error){
                     console.log(error.responseText);
                 }
